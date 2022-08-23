@@ -47,7 +47,7 @@
   left: 0;
   right: 0;
   top: 0;
-  height: 60px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -60,7 +60,6 @@
 }
 .nav__item {
   border-bottom: 2px solid transparent;
-  padding-bottom: 5px;
   transition: all 0.35s;
 }
 .nav__item:hover {
@@ -75,7 +74,8 @@
   color: #01fd6e;
 }
 .movies {
-  margin-top: 80px;
+  margin-top: 60px;
+  padding-top: 30px;
   margin-bottom: 20px;
 }
 .movies__list {
