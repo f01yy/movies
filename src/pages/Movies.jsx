@@ -12,7 +12,6 @@ const Movies = () => {
   const currentPage = useSelector((state) => state.movies.page);
 
   useEffect(() => {
-    console.log('WORKED');
     dispatch(fetchMovies({ query: searchQuery, page: currentPage }));
   }, [searchQuery, currentPage, dispatch]);
 

@@ -117,7 +117,11 @@ const MoviesPagination = () => {
         >
           {1}
         </li>
-        {(currentPage > 6  && pagesCount > 11) ? <span className='three-dots'>&#8230;</span> : ''}
+        {currentPage > 6 && pagesCount > 11 ? (
+          <span className='three-dots'>&#8230;</span>
+        ) : (
+          ''
+        )}
         {pagesElems}
         {currentPage + 5 < pagesCount && pagesCount > 11 ? (
           <>

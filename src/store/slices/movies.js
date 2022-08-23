@@ -25,7 +25,6 @@ export const moviesSlice = createSlice({
     },
     selectPage(state, action) {
       state.page = action.payload;
-      console.log(action.payload);
     }
   },
   extraReducers: (builder) => {

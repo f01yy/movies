@@ -8,6 +8,5 @@ export const getMoviesByQueryAndPage = async (query, page) => {
     },  
   });
   const moviesData = response.data.data;
-  console.log(moviesData);
   return moviesData;
 };
