@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {searchMovie} from '../store/slices/movies'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchMovie, selectPage } from '../store/slices/movies';
 
 const MoviesSearch = () => {
   const [query, setQuery] = useState('');
@@ -13,6 +13,7 @@ const MoviesSearch = () => {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(searchMovie(query));
+          dispatch(selectPage(1));
         }}
       >
         <button
@@ -23,24 +24,21 @@ const MoviesSearch = () => {
             setQuery('');
           }}
         >
-          <i className="fa-solid fa-eraser"></i>
+          <i className='fa-solid fa-eraser'></i>
         </button>
         <input
           className='movies__input'
-          type="text"
+          type='text'
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search.."
+          placeholder='Search..'
         />
-        <button
-          className='movies__button'
-          type='submit'
-        >
-          <i className="fa-solid fa-magnifying-glass"></i>
+        <button className='movies__button' type='submit'>
+          <i className='fa-solid fa-magnifying-glass'></i>
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default MoviesSearch
+export default MoviesSearch;
