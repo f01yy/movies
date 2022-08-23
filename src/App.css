@@ -233,4 +233,9 @@
 .pages__prev.hidden, .pages__next.hidden {
   visibility: hidden;
 }
-
+.three-dots {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Roboto Mono', monospace;
+  color: rgba(255, 253, 253, 0.4);
+}

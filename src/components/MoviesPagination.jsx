@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPagesCount } from '../utils/pages';
 import { selectPage } from '../store/slices/movies';
+import { current } from '@reduxjs/toolkit';
 
 const MoviesPagination = () => {
   const dispatch = useDispatch();
@@ -19,25 +20,143 @@ const MoviesPagination = () => {
       className={currentPage === page ? 'pages__item active' : 'pages__item'}
       onClick={() => {
         dispatch(selectPage(page));
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
       }}
     >
       {page}
     </li>
   ));
 
+  const pagesElemsV2 = useMemo(() => {
+    if (currentPage <= 6) {
+      return pagesArray.slice(1, 10).map((page) => (
+        <li
+          key={page}
+          className={currentPage === page ? 'pages__item active' : 'pages__item'}
+          onClick={() => {
+            dispatch(selectPage(page));
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          {page}
+        </li>
+      ));
+    } else {
+      return pagesArray.slice(currentPage - 5, currentPage + 4).map((page) => (
+        <li
+          key={page}
+          className={currentPage === page ? 'pages__item active' : 'pages__item'}
+          onClick={() => {
+            dispatch(selectPage(page));
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          {page}
+        </li>
+      ));
+    }
+  }, [currentPage, dispatch, pagesArray]);
+
   return (
     <nav className='pages'>
       <ul className='pages__list'>
-      <li className={currentPage === 1 ? 'pages__item pages__prev hidden' : 'pages__item pages__prev'}>Prev</li>
-        {pagesCount <= 8
+        <li
+          className={
+            currentPage === 1
+              ? 'pages__item pages__prev hidden'
+              : 'pages__item pages__prev'
+          }
+          onClick={() => {
+            dispatch(selectPage(currentPage - 1));
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          Prev
+        </li>
+        {/* {pagesCount <= 12
           ? pagesElems
-          : pagesElems.slice(0, 6).concat([
+          : pagesElems.slice(0, 10).concat([
               <li className='pages__item' key='...'>
                 ...
               </li>,
               pagesElems.slice(-1),
-            ])}
-        <li className={currentPage === pagesCount ? 'pages__item pages__next hidden' : 'pages__item pages__next'}>Next</li>
+            ])} */}
+        <li
+          key={1}
+          className={currentPage === 1 ? 'pages__item active' : 'pages__item'}
+          onClick={() => {
+            dispatch(selectPage(1));
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          {1}
+        </li>
+        {currentPage > 6
+          ?
+          <span className='three-dots'>&#8230;</span>
+          :
+          ''
+        }
+        {pagesElemsV2}
+        {currentPage + 5 < pagesCount
+          ?
+          <>
+            <span className='three-dots'>&#8230;</span>
+            <li
+            key={pagesCount}
+            className={currentPage === pagesCount ? 'pages__item active' : 'pages__item'}
+            onClick={() => {
+              dispatch(selectPage(pagesCount));
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
+            }}
+          >
+            {pagesCount}
+          </li>
+        </>
+          :
+          ''
+        }
+        <li
+          className={
+            currentPage === pagesCount
+              ? 'pages__item pages__next hidden'
+              : 'pages__item pages__next'
+          }
+          onClick={() => {
+            dispatch(selectPage(currentPage + 1));
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          Next
+        </li>
       </ul>
     </nav>
   );
