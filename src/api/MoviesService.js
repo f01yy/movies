@@ -5,6 +5,7 @@ export const getMoviesByQueryAndPage = async (query, page) => {
     params: {
       query_term: query,
       page: page,
+      limit: 24,
     },  
   });
   const moviesData = response.data.data;
