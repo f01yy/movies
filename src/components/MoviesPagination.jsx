@@ -59,7 +59,7 @@ const MoviesPagination = () => {
         </li>
 
         {pagesElems[0]}
-        {currentPage >= 7 && <span className='three-dots'>&#8230;</span>}
+        {currentPage >= 7 && pagesCount > 11 && <span className='three-dots'>&#8230;</span>}
         {pagesCount <= 11
           ? pagesElems.slice(1, -1)
           : currentPage >= 6 && pagesCount - currentPage > 5
@@ -67,7 +67,7 @@ const MoviesPagination = () => {
           : pagesCount - currentPage <= 5
           ? pagesElems.slice(-10, -1)
           : pagesElems.slice(1, 10)}
-        {pagesCount - currentPage > 5 && (
+        {pagesCount - currentPage > 5 && pagesCount > 11 && (
           <span className='three-dots'>&#8230;</span>
         )}
         {pagesCount !== 1 && pagesElems[pagesElems.length - 1]}
