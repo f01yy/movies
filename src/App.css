@@ -127,7 +127,7 @@
 .movies__search {
   display: flex;
   justify-content: center;
-  padding: 0 20px 0 20px;
+  padding: 0 20px;
 }
 .movies__form {
   width: 100%;
@@ -148,7 +148,7 @@
   outline: none;
   border: none;
   background-color: #222222;
-  padding: 10px 55px 10px 20px;
+  padding: 10px 80px 10px 20px;
   font-size: 18px;
   font-weight: 300;
   color: #fff;
@@ -178,7 +178,7 @@
 .movies__delete {
   cursor: pointer;
   position: absolute;
-  left: -50px;
+  right: 40px;
   z-index: 4;
   border: none;
   height: 50px;
@@ -190,7 +190,7 @@
 }
 .movies__delete > i {
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   transition: all 0.2s;
 }
 .movies__delete:hover > i {
