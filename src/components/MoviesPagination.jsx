@@ -18,7 +18,7 @@ const MoviesPagination = () => {
     }
 
     if (pagesCount <= 11) {
-      return pagesArray.slice(1).map((page) => (
+      return pagesArray.slice(1, -1).map((page) => (
         <li
           key={page}
           className={
@@ -58,24 +58,49 @@ const MoviesPagination = () => {
         </li>
       ));
     } else {
-      return pagesArray.slice(currentPage - 5, currentPage + 4).map((page) => (
-        <li
-          key={page}
-          className={
-            currentPage === page ? 'pages__item active' : 'pages__item'
-          }
-          onClick={() => {
-            dispatch(selectPage(page));
-            window.scrollTo({
-              top: 0,
-              left: 0,
-              behavior: 'smooth',
-            });
-          }}
-        >
-          {page}
-        </li>
-      ));
+      if (currentPage + 5 <= pagesCount) {
+        return pagesArray
+          .slice(currentPage - 5, currentPage + 4)
+          .map((page) => (
+            <li
+              key={page}
+              className={
+                currentPage === page ? 'pages__item active' : 'pages__item'
+              }
+              onClick={() => {
+                dispatch(selectPage(page));
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              {page}
+            </li>
+          ));
+      } else {
+        return pagesArray
+          .slice(currentPage - 5, currentPage + 4).slice(0, -1)
+          .map((page) => (
+            <li
+              key={page}
+              className={
+                currentPage === page ? 'pages__item active' : 'pages__item'
+              }
+              onClick={() => {
+                dispatch(selectPage(page));
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              {page}
+            </li>
+          ));
+      }
     }
   }, [currentPage, dispatch, pagesCount]);
 
@@ -123,31 +148,27 @@ const MoviesPagination = () => {
           ''
         )}
         {pagesElems}
-        {currentPage + 5 < pagesCount && pagesCount > 11 ? (
-          <>
-            <span className='three-dots'>&#8230;</span>
-            <li
-              key={pagesCount}
-              className={
-                currentPage === pagesCount
-                  ? 'pages__item active'
-                  : 'pages__item'
-              }
-              onClick={() => {
-                dispatch(selectPage(pagesCount));
-                window.scrollTo({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                });
-              }}
-            >
-              {pagesCount}
-            </li>
-          </>
+        {currentPage + 5 <= pagesCount && pagesCount > 11 ? (
+          <span className='three-dots'>&#8230;</span>
         ) : (
           ''
         )}
+        <li
+          key={pagesCount}
+          className={
+            currentPage === pagesCount ? 'pages__item active' : 'pages__item'
+          }
+          onClick={() => {
+            dispatch(selectPage(pagesCount));
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
+          {pagesCount}
+        </li>
         <li
           className={
             currentPage === pagesCount
