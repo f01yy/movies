@@ -47,7 +47,7 @@
   left: 0;
   right: 0;
   top: 0;
-  height: 90px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -75,7 +75,7 @@
   color: #01fd6e;
 }
 .movies {
-  margin-top: 110px;
+  margin-top: 80px;
   margin-bottom: 20px;
 }
 .movies__list {
