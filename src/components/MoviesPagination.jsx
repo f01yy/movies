@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPagesCount } from '../utils/pages';
 import { selectPage } from '../store/slices/movies';
-import { current } from '@reduxjs/toolkit';
 
 const MoviesPagination = () => {
   const dispatch = useDispatch();
@@ -10,28 +9,13 @@ const MoviesPagination = () => {
   const moviesCount = useSelector((state) => state.movies.moviesCount);
   const currentPage = useSelector((state) => state.movies.page);
   const pagesCount = getPagesCount(moviesCount, 20);
-  const pagesArray = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    pagesArray.push(i);
-  }
-  const pagesElems = pagesArray.map((page) => (
-    <li
-      key={page}
-      className={currentPage === page ? 'pages__item active' : 'pages__item'}
-      onClick={() => {
-        dispatch(selectPage(page));
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth',
-        });
-      }}
-    >
-      {page}
-    </li>
-  ));
+  
+  const pagesElems = useMemo(() => {
+    const pagesArray = [];
+    for (let i = 1; i <= pagesCount; i++) {
+      pagesArray.push(i);
+    }
 
-  const pagesElemsV2 = useMemo(() => {
     if (currentPage <= 6) {
       return pagesArray.slice(1, 10).map((page) => (
         <li
@@ -67,7 +51,7 @@ const MoviesPagination = () => {
         </li>
       ));
     }
-  }, [currentPage, dispatch, pagesArray]);
+  }, [currentPage, dispatch, pagesCount]);
 
   return (
     <nav className='pages'>
@@ -89,14 +73,6 @@ const MoviesPagination = () => {
         >
           Prev
         </li>
-        {/* {pagesCount <= 12
-          ? pagesElems
-          : pagesElems.slice(0, 10).concat([
-              <li className='pages__item' key='...'>
-                ...
-              </li>,
-              pagesElems.slice(-1),
-            ])} */}
         <li
           key={1}
           className={currentPage === 1 ? 'pages__item active' : 'pages__item'}
@@ -117,7 +93,7 @@ const MoviesPagination = () => {
           :
           ''
         }
-        {pagesElemsV2}
+        {pagesElems}
         {currentPage + 5 < pagesCount
           ?
           <>
