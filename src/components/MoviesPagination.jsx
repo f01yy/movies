@@ -7,6 +7,7 @@ const MoviesPagination = () => {
   const dispatch = useDispatch();
 
   const moviesCount = useSelector((state) => state.movies.moviesCount);
+  
   const currentPage = useSelector((state) => state.movies.page);
   const pagesCount = getPagesCount(moviesCount, 20);
   
@@ -52,6 +53,10 @@ const MoviesPagination = () => {
       ));
     }
   }, [currentPage, dispatch, pagesCount]);
+
+  if (moviesCount === 0) {
+    return;
+  }
 
   return (
     <nav className='pages'>
