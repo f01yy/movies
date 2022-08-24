@@ -4,6 +4,8 @@ import {
   selectGenre,
   selectPage,
   selectMinimumRating,
+  selectSort,
+  selectOrder
 } from '../store/slices/movies';
 
 const MoviesFilter = () => {
@@ -41,14 +43,20 @@ const MoviesFilter = () => {
   const currentMinimumRating = useSelector(
     (state) => state.movies.minimumRating
   );
+  const currentSort = useSelector((state) => state.movies.sort);
+  const currentOrder = useSelector((state) => state.movies.order);
 
   const [genre, setGenre] = useState(currentGenre);
   const [rating, setRating] = useState(currentMinimumRating);
+  const [sort, setSort] = useState(currentSort);
+  const [order, setOrder] = useState(currentOrder);
 
   useEffect(() => {
     setGenre(currentGenre);
     setRating(currentMinimumRating);
-  }, [currentGenre, currentMinimumRating, dispatch]);
+    setSort(currentSort);
+    setOrder(currentOrder);
+  }, [currentGenre, currentMinimumRating, currentSort, currentOrder, dispatch]);
 
   return (
     <aside>
@@ -71,11 +79,41 @@ const MoviesFilter = () => {
             ))}
           </select>
         </label>
+
+        <label>
+          Sort By:
+          <select
+            className='movies__select'
+            value={sort}
+            onChange={(e) => {
+              setSort(e.target.value);
+            }}
+          >
+            <option value='date_added'>By date added</option>
+            <option value='year'>By year</option>
+            <option value='rating'>By rating</option>
+          </select>
+        </label>
+
+        <label>
+          Order by:
+          <select
+            className='movies__select'
+            value={order}
+            onChange={(e) => {
+              setOrder(e.target.value);
+            }}
+          >
+            <option value='desc'>Descending</option>
+            <option value='asc'>Ascending</option>
+          </select>
+        </label>
+
         <label>
           Minimum rating on IMDb:
           <input
             value={rating}
-            classname='movies__range'
+            className='movies__range'
             type='range'
             min={0}
             max={9}
@@ -86,6 +124,7 @@ const MoviesFilter = () => {
           />
           {rating}
         </label>
+
         <button
           className='filter__button'
           type='submit'
@@ -94,6 +133,8 @@ const MoviesFilter = () => {
             dispatch(selectPage(1));
             dispatch(selectGenre(genre));
             dispatch(selectMinimumRating(rating));
+            dispatch(selectSort(sort));
+            dispatch(selectOrder(order));
           }}
         >
           Filter

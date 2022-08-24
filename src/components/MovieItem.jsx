@@ -9,7 +9,7 @@ const MovieItem = ({ movie }) => {
       <div className='movie__info'>
         <h3 className='movie__title'>{movie.title ? movie.title : ''}</h3>
         <div className='movie__genre'>
-          {movie.year ? movie.year : ''}{movie.genres ? `${', ' + movie.genres[0]}` : ''}
+          {movie.year ? movie.year + ', ' : ''}{movie.genres ? `${movie.genres[0]}` : ''}
         </div>
         {movie.rating ? (
           <div className='movie__rating'>{movie.rating}</div>
