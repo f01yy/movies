@@ -12,10 +12,11 @@ const Movies = () => {
   const searchQuery = useSelector((state) => state.movies.searchQuery);
   const currentPage = useSelector((state) => state.movies.page);
   const currentGenre = useSelector((state) => state.movies.genre);
+  const currentMinimumRating = useSelector((state) => state.movies.minimumRating);
 
   useEffect(() => {
-    dispatch(fetchMovies({ query: searchQuery, page: currentPage, genre: currentGenre }));
-  }, [searchQuery, currentPage, currentGenre, dispatch]);
+    dispatch(fetchMovies({ query: searchQuery, page: currentPage, genre: currentGenre, rating: currentMinimumRating }));
+  }, [searchQuery, currentPage, currentGenre, currentMinimumRating, dispatch]);
 
   return (
     <section>

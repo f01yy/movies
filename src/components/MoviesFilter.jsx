@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectGenre, selectPage } from '../store/slices/movies';
+import {
+  selectGenre,
+  selectPage,
+  selectMinimumRating,
+} from '../store/slices/movies';
 
 const MoviesFilter = () => {
   const genres = [
@@ -34,30 +38,67 @@ const MoviesFilter = () => {
 
   const dispatch = useDispatch();
   const currentGenre = useSelector((state) => state.movies.genre);
+  const currentMinimumRating = useSelector(
+    (state) => state.movies.minimumRating
+  );
+
+  const [genre, setGenre] = useState(currentGenre);
+  const [rating, setRating] = useState(currentMinimumRating);
+
+  useEffect(() => {
+    setGenre(currentGenre);
+    setRating(currentMinimumRating);
+  }, [currentGenre, currentMinimumRating, dispatch]);
 
   return (
     <aside>
-      <div className='movies__filter'>
-        Genre:
-        <select 
-          className='movies__select'
-          value={currentGenre}
-          onChange={(e) => {
+      <form className='movies__filter'>
+        <label>
+          Genre:
+          <select
+            className='movies__select'
+            value={genre}
+            onChange={(e) => {
+              setGenre(e.target.value);
+            }}
+          >
+            <option disabled>Choose a genre</option>
+            <option value=''>All</option>
+            {genres.map((genre) => (
+              <option value={genre} key={genre}>
+                {genre}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Minimum rating on IMDb:
+          <input
+            value={rating}
+            classname='movies__range'
+            type='range'
+            min={0}
+            max={9}
+            step={1}
+            onChange={(e) => {
+              setRating(Number(e.target.value));
+            }}
+          />
+          {rating}
+        </label>
+        <button 
+          className='filter__button'
+          type='submit'
+          onClick={(e) => {
+            e.preventDefault();
             dispatch(selectPage(1));
-            dispatch(selectGenre(e.target.value));
+            dispatch(selectGenre(genre));
+            dispatch(selectMinimumRating(rating));
           }}
         >
-          <option disabled>
-            Choose a genre
-          </option>
-          <option value="">All</option>
-          {genres.map((genre) => (
-            <option value={genre} key={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
-      </div>
+          Filter
+        </button>
+      </form>
     </aside>
   );
 };
