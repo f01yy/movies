@@ -161,6 +161,7 @@
   word-break: break-word;
   position: relative;
   transition: all .3s;
+  cursor: pointer;
 }
 .movie:hover {
   background-color: #eee;
