@@ -101,6 +101,9 @@
   align-items: center;
   gap: 50px;
 }
+.movies__filter label:first-child {
+  margin-top: 30px;
+}
 .movies__filter label {
   display: flex;
   flex-direction: column;
