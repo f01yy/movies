@@ -43,7 +43,7 @@
   font-family: 'Roboto Mono', monospace;
   position: fixed;
   z-index: 5;
-  background-color: rgba(1, 2, 8, 0.95);
+  background-color: rgba(1, 2, 8, 1);
   left: 0;
   right: 0;
   top: 0;

@@ -86,7 +86,7 @@ const MoviesFilter = () => {
           />
           {rating}
         </label>
-        <button 
+        <button
           className='filter__button'
           type='submit'
           onClick={(e) => {
