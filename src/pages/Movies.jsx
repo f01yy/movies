@@ -5,6 +5,7 @@ import MoviesList from '../components/MoviesList';
 import MoviesSearch from '../components/MoviesSearch';
 import MoviesPagination from '../components/MoviesPagination';
 import MoviesFilter from '../components/MoviesFilter';
+import Loader from '../UI/Loader/Loader';
 
 const Movies = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,8 @@ const Movies = () => {
   const currentSort = useSelector((state) => state.movies.sort);
   const currentOrder = useSelector((state) => state.movies.order);
   const currentLimit = useSelector((state) => state.movies.limit);
+  const loading = useSelector((state) => state.movies.loading);
+  // const loading = true;
 
   useEffect(() => {
     const freeWidth = window.innerWidth - 250 - 30; // 230px = filter width, 30 = 15 + 15 = paddings
@@ -56,11 +59,18 @@ const Movies = () => {
     <section>
       <div className='movies'>
         <MoviesSearch />
-        <div className='movies__main'>
-          <MoviesFilter />
-          <MoviesList movies={movies} />
-        </div>
-        <MoviesPagination />
+        {loading
+          ?
+          <Loader />
+          :
+          <>
+            <div className='movies__main'>
+              <MoviesFilter />
+              <MoviesList movies={movies} />
+            </div>
+            <MoviesPagination />
+          </>
+        }
       </div>
     </section>
   );

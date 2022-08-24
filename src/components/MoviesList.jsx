@@ -8,9 +8,14 @@ const MoviesList = ({ movies }) => {
 
   return (
     <ul className='movies__list'>
-      {movies.map((movie) => (
-        <MovieItem key={movie.id} movie={movie} />
-      ))}
+      {!movies
+        ?
+        <div className='nothing-found-error'>Nothing found</div>
+        :
+        movies.map((movie) => (
+          <MovieItem key={movie.id} movie={movie} />
+        ))
+      }
     </ul>
   );
 };

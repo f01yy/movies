@@ -22,6 +22,7 @@ export const moviesSlice = createSlice({
     sort: 'date_added',
     order: 'desc',
     limit: 20,
+    loading: false,
   },
   reducers: {
     searchMovie(state, action) {
@@ -47,9 +48,14 @@ export const moviesSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchMovies.fulfilled, (state, action) => {
+    builder
+    .addCase(fetchMovies.fulfilled, (state, action) => {
+      state.loading = false;
       state.list = action.payload.movies;
       state.moviesCount = action.payload.movie_count;
+    })
+    .addCase(fetchMovies.pending, (state) => {
+      state.loading = true;
     });
   },
 });
