@@ -5,8 +5,6 @@ const MoviesList = ({ movies }) => {
   if (!movies) {
     return <div className='nothing-found-error'>Nothing found</div>;
   }
-  
-  console.log(movies);
 
   return (
     <ul className='movies__list'>
