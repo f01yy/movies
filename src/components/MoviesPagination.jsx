@@ -9,7 +9,8 @@ const MoviesPagination = () => {
   const moviesCount = useSelector((state) => state.movies.moviesCount);
 
   const currentPage = useSelector((state) => state.movies.page);
-  const pagesCount = getPagesCount(moviesCount, 20);
+  const currentLimit = useSelector((state) => state.movies.limit);
+  const pagesCount = getPagesCount(moviesCount, currentLimit);
 
   const pagesElems = useMemo(() => {
     const pagesArray = [];

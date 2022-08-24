@@ -4,8 +4,8 @@ import { getMovies } from '../../api/MoviesService';
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async ({ query, page, genre, rating, sort, order }) => {
-    const response = await getMovies(query, page, genre, rating, sort, order);
+  async ({ query, page, genre, rating, sort, order, limit }) => {
+    const response = await getMovies(query, page, genre, rating, sort, order, limit);
     return response;
   }
 );
@@ -21,6 +21,7 @@ export const moviesSlice = createSlice({
     minimumRating: 0,
     sort: 'date_added',
     order: 'desc',
+    limit: 20,
   },
   reducers: {
     searchMovie(state, action) {
@@ -41,6 +42,9 @@ export const moviesSlice = createSlice({
     selectOrder(state, action) {
       state.order = action.payload;
     },
+    setLimit(state, action) {
+      state.limit = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
@@ -59,4 +63,5 @@ export const {
   selectMinimumRating,
   selectSort,
   selectOrder,
+  setLimit,
 } = moviesSlice.actions;

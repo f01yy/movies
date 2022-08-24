@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const getMovies = async (query, page, genre, rating, sort, order) => {
+export const getMovies = async (query, page, genre, rating, sort, order, limit) => {
   const response = await axios.get('https://yts.mx/api/v2/list_movies.json', {
     params: {
       query_term: query,
-      page: page,
-      limit: 20,
-      genre: genre,
+      page,
+      limit,
+      genre,
       minimum_rating: rating,
       sort_by: sort,
       order_by: order,

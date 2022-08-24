@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovies } from '../store/slices/movies';
+import { fetchMovies, setLimit } from '../store/slices/movies';
 import MoviesList from '../components/MoviesList';
 import MoviesSearch from '../components/MoviesSearch';
 import MoviesPagination from '../components/MoviesPagination';
@@ -17,6 +17,17 @@ const Movies = () => {
   );
   const currentSort = useSelector((state) => state.movies.sort);
   const currentOrder = useSelector((state) => state.movies.order);
+  const currentLimit = useSelector((state) => state.movies.limit);
+
+  useEffect(() => {
+    const freeWidth = window.innerWidth - 250 - 30; // 230px = filter width, 30 = 15 + 15 = paddings
+    let moviesOnRowCount = Math.floor(freeWidth / 230);
+    const estimatedWidth = moviesOnRowCount * 230 + (moviesOnRowCount - 1) * 20; // 20 = gap
+    if (estimatedWidth > freeWidth) {
+      moviesOnRowCount -= 1;
+    }
+    dispatch(setLimit(4 * moviesOnRowCount));
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(
@@ -27,6 +38,7 @@ const Movies = () => {
         rating: currentMinimumRating,
         sort: currentSort,
         order: currentOrder,
+        limit: currentLimit,
       })
     );
   }, [
@@ -36,6 +48,7 @@ const Movies = () => {
     currentMinimumRating,
     currentSort,
     currentOrder,
+    currentLimit,
     dispatch,
   ]);
 
