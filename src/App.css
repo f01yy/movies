@@ -157,8 +157,14 @@
   opacity: 0;
 }
 .movie {
+  border-radius: 10px;
   word-break: break-word;
   position: relative;
+  transition: all .3s;
+}
+.movie:hover {
+  background-color: #eee;
+  color: #444;
 }
 .movie__info {
   padding: 10px;
@@ -178,6 +184,10 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  transition: all .3s;
+}
+.movie:hover .movie__img {
+  transform: scale(0.95);
 }
 .movie__genre {
   font-size: 16px;
