@@ -4,22 +4,27 @@ import { fetchMovies } from '../store/slices/movies';
 import MoviesList from '../components/MoviesList';
 import MoviesSearch from '../components/MoviesSearch';
 import MoviesPagination from '../components/MoviesPagination';
+import MoviesFilter from '../components/MoviesFilter';
 
 const Movies = () => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies.list);
   const searchQuery = useSelector((state) => state.movies.searchQuery);
   const currentPage = useSelector((state) => state.movies.page);
+  const currentGenre = useSelector((state) => state.movies.genre);
 
   useEffect(() => {
-    dispatch(fetchMovies({ query: searchQuery, page: currentPage }));
-  }, [searchQuery, currentPage, dispatch]);
+    dispatch(fetchMovies({ query: searchQuery, page: currentPage, genre: currentGenre }));
+  }, [searchQuery, currentPage, currentGenre, dispatch]);
 
   return (
     <section>
       <div className='movies'>
         <MoviesSearch />
-        <MoviesList movies={movies} />
+        <div className='movies__main'>
+          <MoviesFilter />
+          <MoviesList movies={movies} />
+        </div>
         <MoviesPagination />
       </div>
     </section>

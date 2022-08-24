@@ -4,8 +4,8 @@ import { getMoviesByQueryAndPage } from '../../api/MoviesService';
 
 export const fetchMovies = createAsyncThunk(
   'movies/fetchMovies',
-  async ({query, page}) => {
-    const response = await getMoviesByQueryAndPage(query, page);
+  async ({query, page, genre}) => {
+    const response = await getMoviesByQueryAndPage(query, page, genre);
     return response;
   }
 );
@@ -16,7 +16,7 @@ export const moviesSlice = createSlice({
     list: [],
     searchQuery: '',
     page: 1,
-    genre: 'All',
+    genre: '',
     moviesCount: 0,
   },
   reducers: {
@@ -25,6 +25,9 @@ export const moviesSlice = createSlice({
     },
     selectPage(state, action) {
       state.page = action.payload;
+    },
+    selectGenre(state, action) {
+      state.genre = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -38,4 +41,4 @@ export const moviesSlice = createSlice({
 
 export default moviesSlice.reducer;
 
-export const { searchMovie, selectPage } = moviesSlice.actions;
+export const { searchMovie, selectPage, selectGenre } = moviesSlice.actions;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchMovie, selectPage } from '../store/slices/movies';
+import { searchMovie, selectPage, selectGenre } from '../store/slices/movies';
 
 const MoviesSearch = () => {
   const [query, setQuery] = useState('');
@@ -14,6 +14,7 @@ const MoviesSearch = () => {
           e.preventDefault();
           dispatch(searchMovie(query));
           dispatch(selectPage(1));
+          dispatch(selectGenre(''));
         }}
       >
         <button
