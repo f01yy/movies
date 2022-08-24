@@ -20,7 +20,6 @@ const Movies = () => {
   const currentOrder = useSelector((state) => state.movies.order);
   const currentLimit = useSelector((state) => state.movies.limit);
   const loading = useSelector((state) => state.movies.loading);
-  // const loading = true;
 
   useEffect(() => {
     const freeWidth = window.innerWidth - 250 - 30; // 230px = filter width, 30 = 15 + 15 = paddings

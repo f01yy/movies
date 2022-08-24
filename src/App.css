@@ -75,11 +75,13 @@
   color: #01fd6e;
 }
 .movies {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 60px;
-  padding-top: 30px;
-  margin-bottom: 20px;
+  padding-top: 90px;
+  padding-bottom: 20px;
 }
 .movies__main {
   display: grid;
@@ -270,8 +272,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  margin-top: 30px;
 }
 .pages__list {
   display: flex;
