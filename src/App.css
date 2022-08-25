@@ -445,6 +445,9 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .filter__icon {
+    display: block;
+  }
   .pages__item {
     font-size: 16px;
   }
@@ -489,9 +492,6 @@
 }
 
 @media (max-width: 425px) {
-  .filter__icon {
-    display: block;
-  }
   .pages__list {
     gap: 4px;
   }

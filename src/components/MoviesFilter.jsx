@@ -5,10 +5,10 @@ import {
   selectPage,
   selectMinimumRating,
   selectSort,
-  selectOrder
+  selectOrder,
 } from '../store/slices/movies';
 
-const MoviesFilter = ({isOpened, setIsOpened}) => {
+const MoviesFilter = ({ isOpened, setIsOpened }) => {
   const genres = [
     'Action',
     'Adventure',
