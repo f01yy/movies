@@ -26,6 +26,7 @@ const MoviesSearch = ({isOpened, setIsOpened}) => {
             dispatch(selectMinimumRating(0));
             dispatch(selectSort('date_added'));
             dispatch(selectOrder('desc'));
+            setIsOpened(false);
           }}
         >
           <button

@@ -135,6 +135,7 @@ const MoviesFilter = ({isOpened, setIsOpened}) => {
             dispatch(selectMinimumRating(rating));
             dispatch(selectSort(sort));
             dispatch(selectOrder(order));
+            setIsOpened(false);
           }}
         >
           Filter
