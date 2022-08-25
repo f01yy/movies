@@ -8,7 +8,7 @@ import {
   selectOrder
 } from '../store/slices/movies';
 
-const MoviesFilter = () => {
+const MoviesFilter = ({isOpened, setIsOpened}) => {
   const genres = [
     'Action',
     'Adventure',
@@ -59,7 +59,7 @@ const MoviesFilter = () => {
   }, [currentGenre, currentMinimumRating, currentSort, currentOrder, dispatch]);
 
   return (
-    <aside className='movies__aside'>
+    <aside className={isOpened ? 'movies__aside active' : 'movies__aside'}>
       <form className='movies__filter'>
         <label>
           Genre:

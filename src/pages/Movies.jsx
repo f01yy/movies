@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovies, setLimit } from '../store/slices/movies';
 import MoviesList from '../components/MoviesList';
@@ -20,6 +20,8 @@ const Movies = () => {
   const currentOrder = useSelector((state) => state.movies.order);
   const currentLimit = useSelector((state) => state.movies.limit);
   const loading = useSelector((state) => state.movies.loading);
+
+  const [isOpened, setIsOpened] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth > 510) {
@@ -60,13 +62,13 @@ const Movies = () => {
   return (
     <section>
       <div className='movies'>
-        <MoviesSearch />
+        <MoviesSearch isOpened={isOpened} setIsOpened={setIsOpened} />
         {loading ? (
           <Loader />
         ) : (
           <>
             <div className='movies__main'>
-              <MoviesFilter />
+              <MoviesFilter isOpened={isOpened} setIsOpened={setIsOpened} />
               <MoviesList movies={movies} />
             </div>
             <MoviesPagination />
