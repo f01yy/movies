@@ -22,13 +22,16 @@ const Movies = () => {
   const loading = useSelector((state) => state.movies.loading);
 
   useEffect(() => {
-    const freeWidth = window.innerWidth - 250 - 30; // 230px = filter width, 30 = 15 + 15 = paddings
-    let moviesOnRowCount = Math.floor(freeWidth / 230);
-    const estimatedWidth = moviesOnRowCount * 230 + (moviesOnRowCount - 1) * 20; // 20 = gap
-    if (estimatedWidth > freeWidth) {
-      moviesOnRowCount -= 1;
+    if (window.innerWidth > 510) {
+      const freeWidth = window.innerWidth > 1024 ? window.innerWidth - 250 - 30 : window.innerWidth - 30; // 230px = filter width, 30 = 15 + 15 = paddings
+      let moviesOnRowCount = Math.floor(freeWidth / 230);
+      const estimatedWidth =
+        moviesOnRowCount * 230 + (moviesOnRowCount - 1) * 20; // 20 = gap
+      if (estimatedWidth > freeWidth) {
+        moviesOnRowCount -= 1;
+      }
+      dispatch(setLimit(5 * moviesOnRowCount));
     }
-    dispatch(setLimit(4 * moviesOnRowCount));
   }, [dispatch]);
 
   useEffect(() => {
@@ -58,10 +61,9 @@ const Movies = () => {
     <section>
       <div className='movies'>
         <MoviesSearch />
-        {loading
-          ?
+        {loading ? (
           <Loader />
-          :
+        ) : (
           <>
             <div className='movies__main'>
               <MoviesFilter />
@@ -69,7 +71,7 @@ const Movies = () => {
             </div>
             <MoviesPagination />
           </>
-        }
+        )}
       </div>
     </section>
   );

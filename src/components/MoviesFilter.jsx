@@ -59,7 +59,7 @@ const MoviesFilter = () => {
   }, [currentGenre, currentMinimumRating, currentSort, currentOrder, dispatch]);
 
   return (
-    <aside>
+    <aside className='movies__aside'>
       <form className='movies__filter'>
         <label>
           Genre:

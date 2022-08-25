@@ -17,12 +17,12 @@ const Nav = () => {
         </li>
         <li className='nav__item'>
           <NavLink className='nav__link' to='/search'>
-            Search films
+            Search
           </NavLink>
         </li>
         <li className='nav__item'>
           <NavLink className='nav__link' to='/about'>
-            About this app
+            About
           </NavLink>
         </li>
       </ul>

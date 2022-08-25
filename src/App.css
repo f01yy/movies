@@ -36,6 +36,7 @@
   animation: flashing-border 1s step-end infinite, printed-text 4s steps(14);
 }
 .home__text {
+  text-align: center;
   font-size: 30px;
 }
 
@@ -50,10 +51,9 @@
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .nav__list {
-  margin-left: 30px;
   list-style-type: none;
   display: flex;
   gap: 50px;
@@ -326,7 +326,7 @@
   color: #f44242;
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .pages__item {
     font-size: 16px;
   }
@@ -345,5 +345,16 @@
   .movies__delete > i {
     font-size: 14px;
   }
+  .movies__main {
+    grid-template-columns: 1fr;
+  }
+  .movies__aside {
+    display: none;
+  }
+  .home__title {
+    font-size: 32px;
+  }
+  .home__text {
+    font-size: 24px;
+  }
 }
-
