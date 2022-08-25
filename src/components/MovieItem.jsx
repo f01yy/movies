@@ -1,8 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MovieItem = ({ movie }) => {
+  const navigate = useNavigate();
+
   return (
-    <li className='movie'>
+    <li 
+      className='movie'
+      onClick={() => navigate(`/search/${movie.id}`)}
+    >
       <div className='movie__img'>
         <img src={movie.medium_cover_image} alt={movie.title ? movie.title : 'movie'} />
       </div>

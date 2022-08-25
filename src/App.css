@@ -386,6 +386,63 @@
   transform: rotate(45deg);
   top: calc(50% - 1px);
 }
+.movie-page {
+  margin-top: 70px;
+  padding: 0 15px;
+  overflow: hidden;
+  min-height: calc(100vh - 70px);
+}
+.movie-page__content {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.movie-page__title {
+  text-align: center;
+  font-size: 34px;
+}
+.movie-page__desc {
+  font-size: 20px;
+}
+.movie-page__rating {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  color: #000;
+  background-color: rgb(255, 213, 0);
+  border: 2px solid rgb(255, 213, 0);
+}
+.movie-page__runtime {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #444;
+  border: 2px solid #444;
+}
+.movie-page__extra {
+  display: flex;
+  gap: 10px;
+}
+.movie-page__genres {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
+.movie-page__genres span {
+  padding: 5px;
+  font-weight: 600;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.movie-page__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 @media screen and (max-width: 1024px) {
   .pages__item {

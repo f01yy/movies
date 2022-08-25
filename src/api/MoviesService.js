@@ -13,5 +13,18 @@ export const getMovies = async (query, page, genre, rating, sort, order, limit) 
     },  
   });
   const moviesData = response.data.data;
+  console.log(moviesData);
   return moviesData;
 };
+
+export const getMovieDetails = async (id) => {
+  const response = await axios.get('https://yts.mx/api/v2/movie_details.json', {
+    params: {
+      with_cast: true,
+      with_images: true,
+      movie_id: id,
+    },
+  });
+  console.log(response.data.data.movie);
+  return response.data.data.movie;
+}
