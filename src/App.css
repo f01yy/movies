@@ -69,6 +69,7 @@
   text-decoration: none;
   color: #eee;
   text-transform: uppercase;
+  font-size: 16px;
 }
 .nav__link.active,
 .pages__item.active {
@@ -99,8 +100,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 50px;
+  justify-content: flex-start;
+  gap: 20px;
 }
 .movies__filter label {
   display: flex;
@@ -160,7 +161,7 @@
   border-radius: 10px;
   word-break: break-word;
   position: relative;
-  transition: all .2s;
+  transition: all .3s;
   cursor: pointer;
 }
 .movie:hover {
@@ -169,12 +170,10 @@
 }
 .movie__info {
   padding: 10px;
-  transition: all .2s;
 }
 .movie__title {
   font-size: 20px;
   margin-bottom: 10px;
-  transition: all .2s;
 }
 .movie__img {
   width: 230px;
@@ -187,14 +186,13 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  transition: all .2s;
+  transition: all .3s;
 }
 .movie:hover .movie__img {
   transform: scale(0.9);
 }
 .movie__genre {
   font-size: 16px;
-  transition: all .2s;
 }
 .movie__rating {
   position: absolute;
@@ -252,7 +250,7 @@
   background-color: #333;
   padding: 10px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
 }
 .movies__button > i {
   color: #fff;
@@ -265,7 +263,7 @@
   cursor: pointer;
   position: absolute;
   right: 40px;
-  z-index: 4;
+  z-index: 5;
   border: none;
   height: 50px;
   width: 50px;
@@ -276,8 +274,8 @@
 }
 .movies__delete > i {
   color: #fff;
-  font-size: 14px;
-  transition: all 0.2s;
+  font-size: 16px;
+  transition: all 0.3s;
 }
 .movies__delete:hover > i {
   color: #f44242;
@@ -289,6 +287,7 @@
   margin-top: 30px;
 }
 .pages__list {
+  z-index: 5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -326,3 +325,25 @@
   font-size: 20px;
   color: #f44242;
 }
+
+@media (max-width: 1024px) {
+  .pages__item {
+    font-size: 16px;
+  }
+  .nav__link {
+    font-size: 14px;
+  }
+  .movies__form {
+    max-width: 400px;
+  }
+  .movies__input {
+    font-size: 16px;
+  }
+  .movies__button > i {
+    font-size: 16px;
+  }
+  .movies__delete > i {
+    font-size: 14px;
+  }
+}
+

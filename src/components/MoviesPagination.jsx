@@ -59,19 +59,61 @@ const MoviesPagination = () => {
           Prev
         </li>
 
-        {pagesElems[0]}
-        {currentPage >= 7 && pagesCount > 11 && <span className='three-dots'>&#8230;</span>}
-        {pagesCount <= 11
-          ? pagesElems.slice(1, -1)
-          : currentPage >= 6 && pagesCount - currentPage > 5
-          ? pagesElems.slice(currentPage - 5, currentPage + 4)
-          : pagesCount - currentPage <= 5
-          ? pagesElems.slice(-10, -1)
-          : pagesElems.slice(1, 10)}
-        {pagesCount - currentPage > 5 && pagesCount > 11 && (
-          <span className='three-dots'>&#8230;</span>
+        {window.innerWidth > 1024 ? (
+          <>
+            {pagesElems[0]}
+            {currentPage >= 7 && pagesCount > 11 && (
+              <span className='three-dots'>&#8230;</span>
+            )}
+            {pagesCount <= 11
+              ? pagesElems.slice(1, -1)
+              : currentPage >= 6 && pagesCount - currentPage > 5
+              ? pagesElems.slice(currentPage - 5, currentPage + 4)
+              : pagesCount - currentPage <= 5
+              ? pagesElems.slice(-10, -1)
+              : pagesElems.slice(1, 10)}
+            {pagesCount - currentPage > 5 && pagesCount > 11 && (
+              <span className='three-dots'>&#8230;</span>
+            )}
+            {pagesCount !== 1 && pagesElems[pagesElems.length - 1]}
+          </>
+        ) : window.innerWidth > 600 ? (
+          <>
+            {pagesElems[0]}
+            {currentPage >= 5 && pagesCount > 7 && (
+              <span className='three-dots'>&#8230;</span>
+            )}
+            {pagesCount <= 7
+              ? pagesElems.slice(1, -1)
+              : currentPage >= 4 && pagesCount - currentPage > 3
+              ? pagesElems.slice(currentPage - 3, currentPage + 2)
+              : pagesCount - currentPage <= 3
+              ? pagesElems.slice(-6, -1)
+              : pagesElems.slice(1, 6)}
+            {pagesCount - currentPage > 3 && pagesCount > 7 && (
+              <span className='three-dots'>&#8230;</span>
+            )}
+            {pagesCount !== 1 && pagesElems[pagesElems.length - 1]}
+          </>
+        ) : (
+          <>
+            {pagesElems[0]}
+            {currentPage >= 3 && pagesCount > 3 && (
+              <span className='three-dots'>&#8230;</span>
+            )}
+            {pagesCount === 3
+              ? pagesElems[1]
+              : pagesCount > 3 &&
+                currentPage !== 1 &&
+                currentPage !== pagesCount
+              ? pagesElems[currentPage - 1]
+              : ''}
+            {pagesCount - currentPage > 1 && pagesCount > 3 && (
+              <span className='three-dots'>&#8230;</span>
+            )}
+            {pagesCount !== 1 && pagesElems[pagesElems.length - 1]}
+          </>
         )}
-        {pagesCount !== 1 && pagesElems[pagesElems.length - 1]}
 
         <li
           className={
