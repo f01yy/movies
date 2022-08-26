@@ -37,6 +37,11 @@ const Movie = () => {
               </div>
               <div className='movie-page__text'>
                 <div className='movie-page__extra'>
+                  {movie.mpa_rating ? (
+                    <span className='movie-page__mpa'>{movie.mpa_rating}</span>
+                  ) : (
+                    ''
+                  )}
                   {movie.rating ? (
                     <span className='movie-page__rating'>
                       {`IMDb: ${movie.rating}`}
