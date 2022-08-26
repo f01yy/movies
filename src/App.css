@@ -44,7 +44,7 @@
   font-family: 'Roboto Mono', monospace;
   position: fixed;
   z-index: 5;
-  background-color: rgba(1, 2, 8, 1);
+  background-color: #1c1c1c;
   left: 0;
   right: 0;
   top: 0;
@@ -93,6 +93,7 @@
   grid-template-columns: 250px 1fr;
 }
 .movies__filter {
+  white-space: nowrap;
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
   position: fixed;
@@ -205,12 +206,13 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  background-color: #232222;
+  background-color: #151515;
+  border: 2px solid rgb(220, 220, 220);
   color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
+  font-weight: 700;
 }
 .movies__search {
   display: flex;
@@ -342,7 +344,7 @@
 }
 .movies__aside {
   z-index: 4;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 .filter__icon {
   margin: 0 auto;
@@ -372,7 +374,7 @@
 }
 .movies__aside.active {
   width: 100%;
-  height: auto;
+  height: 420px;
   transform: translateX(0);
 }
 .filter__icon.active span {
@@ -392,66 +394,12 @@
   overflow: hidden;
   min-height: calc(100vh - 70px);
 }
-.movie-page__content {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+.movie-page__container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
 }
-.movie-page__title {
-  text-align: center;
-  font-size: 34px;
-}
-.movie-page__desc {
-  font-size: 20px;
-}
-.movie-page__rating {
-  padding: 5px;
-  font-size: 20px;
-  font-weight: 600;
-  border-radius: 10px;
-  color: #000;
-  background-color: rgb(255, 213, 0);
-  border: 2px solid rgb(255, 213, 0);
-}
-.movie-page__runtime {
-  padding: 5px;
-  font-size: 20px;
-  font-weight: 600;
-  border-radius: 10px;
-  background-color: #444;
-  border: 2px solid #444;
-}
-.movie-page__mpa {
-  padding: 5px;
-  font-size: 20px;
-  font-weight: 600;
-  border-radius: 10px;
-  background-color: rgb(25, 213, 75);
-  border: 2px solid rgb(25, 213, 75);
-}
-.movie-page__extra {
-  display: flex;
-  gap: 10px;
-}
-.movie-page__genres {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 20px;
-}
-.movie-page__genres span {
-  padding: 5px;
-  font-weight: 600;
-  background-color: transparent;
-  border-radius: 10px;
-  color: #fff;
-  border: 2px solid #fff;
-}
-.movie-page__text {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+
 
 @media screen and (max-width: 1024px) {
   .filter__icon {
@@ -480,9 +428,9 @@
   }
   .movies__aside {
     overflow: hidden;
+    transform: translateX(-100%);
     width: 0;
     height: 0;
-    transform: translateX(-100%);
   }
   .home__title {
     font-size: 32px;
