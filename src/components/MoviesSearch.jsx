@@ -9,7 +9,7 @@ import {
   selectSort,
 } from '../store/slices/movies';
 
-const MoviesSearch = ({isOpened, setIsOpened}) => {
+const MoviesSearch = ({ isOpened, setIsOpened }) => {
   const [query, setQuery] = useState('');
   const dispatch = useDispatch();
 
@@ -51,7 +51,7 @@ const MoviesSearch = ({isOpened, setIsOpened}) => {
           </button>
         </form>
       </div>
-      <div 
+      <div
         className={isOpened ? 'filter__icon active' : 'filter__icon'}
         onClick={(e) => {
           if (isOpened) {

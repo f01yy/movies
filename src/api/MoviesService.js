@@ -13,7 +13,6 @@ export const getMovies = async (query, page, genre, rating, sort, order, limit) 
     },  
   });
   const moviesData = response.data.data;
-  console.log(moviesData);
   return moviesData;
 };
 
