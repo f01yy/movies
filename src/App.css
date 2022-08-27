@@ -297,33 +297,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 .pages__item {
-  padding: 10px;
   font-family: 'Roboto Mono', monospace;
   color: rgba(255, 253, 253, 0.4);
   font-size: 18px;
   font-weight: 500;
   transition: all 0.3s;
   cursor: pointer;
+  border: 2px solid transparent;
 }
-.pages__item:hover:not(.pages__item.active, .pages__next, .pages__prev) {
+.pages__item:hover:not(.pages__item.active) {
   color: #fff;
-}
-.pages__prev,
-.pages__next {
-  border-radius: 10px;
-  padding: 7px;
-  color: #000;
-  background-color: #fff;
-}
-.pages__prev:hover,
-.pages__next:hover {
-  transform: scale(1.1);
+  border-bottom-color: #01fd6e;
 }
 .pages__prev.hidden,
 .pages__next.hidden {
@@ -354,6 +344,7 @@
   z-index: 4;
   display: none;
   margin-bottom: 20px;
+  margin-top: 7px;
 }
 .filter__icon span {
   transition: all 0.3s;
@@ -451,7 +442,7 @@
 
 @media (max-width: 425px) {
   .pages__list {
-    gap: 4px;
+    gap: 14px;
   }
   .movies__input {
     height: 40px;
