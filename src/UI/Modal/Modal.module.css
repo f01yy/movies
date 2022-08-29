@@ -1,0 +1,18 @@
+.Modal {
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.ModalContent {
+}
+
+.Modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
