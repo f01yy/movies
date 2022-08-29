@@ -1,19 +1,7 @@
 .swiper {
-  width: 85vw;
-  height: 85vh;
+  width: 80vw;
+  height: auto;
   border: 1px solid #222;
-
-}
-@media (max-width: 1024px) {
-  .swiper {
-    height: 58vh;
-  }
-}
-@media (max-width: 425px) {
-  .swiper {
-    width: 90vw;
-    height: 60vw;
-  }
 }
 .swiper-slide {
   user-select: none;
