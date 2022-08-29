@@ -110,10 +110,14 @@ const Movie = () => {
                   ) : (
                     ''
                   )}
-                  <div className='movie-page__desc'>
-                    Description:&nbsp;
-                    <p className='desc__p'>{movie.description_full}</p>
-                  </div>
+                  {movie.description_full ? (
+                    <div className='movie-page__desc'>
+                      Description:&nbsp;
+                      <p className='desc__p'>{movie.description_full}</p>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                   {movie.cast ? (
                     <div className='movie-page__cast'>
                       <div>Cast:&nbsp;</div>

@@ -544,7 +544,6 @@
 }
 
 @media (max-width: 768px) {
-  
   .movie-page__content {
     display: flex;
     flex-direction: column;
